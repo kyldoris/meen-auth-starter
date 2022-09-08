@@ -408,11 +408,346 @@ STOP! Check your work in Postman.
 </html>
 
 
-
-Awesome! Now that our core functionality is built out, all we need is:
+# MEEN Auth Template Build - Part 2
+We've completed the core functionality for our app, but we still have some work to do. We still need:
 
 Index View
 Navigation Partial
-Register View
 Login View
+Register View
 Protected Dashboard View
+Let's start of simple:
+
+
+# Create The Index View
+
+mkdir views
+touch views/index.ejs
+In views/index.ejs:
+
+ <!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>Home</h1>
+</body>
+
+</html>
+
+
+
+# Render the Index View
+
+In server.js:
+
+ // Routes / Controllers
+app.get('/', (req, res) => {
+	res.render('index.ejs');
+});
+
+
+
+# Create the Nav Partial
+
+mkdir views/partials
+touch views/partials/nav.ejs
+In views/partials/nav.ejs:
+
+ <nav>
+	<a href="/">Home</a>
+	<a href="/users/new">Register</a>
+	<a href="/sessions/new">Login</a>
+</nav>
+
+
+
+# Update Index View to Render Nav Partial
+
+In views/index.ejs:
+
+ <!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<%- include('./partials/nav.ejs')  %>
+	<h1>Home Page</h1>
+</body>
+
+</html>
+
+
+
+STOP! Check your work.
+Navigate to http://localhost:3000/. You should see your nav links and your h1 tag.
+
+# Create the Login View
+
+mkdir views/sessions
+touch views/sessions/new.ejs
+
+In views/sessions/new.ejs:
+
+ <!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>MEEN Auth Starter</title>
+</head>
+
+<body>
+	<%- include('../partials/nav.ejs')  %>
+	<h1>Login</h1>
+	<form action='/sessions' method='POST'>
+		<label for="email">Email:</label>
+		<input type="email" name="email" id="email" />
+
+		<label for="password">Password:</label>
+		<input type="password" name="password" id="password" />
+
+		<input type="submit" value="Login">
+	</form>
+</body>
+
+</html>
+If you copied and pasted this code over, remember the name attribute on the form inputs needs to be the same as the req.body field that form value will be filling.
+
+The id attribute on the form inputs needs to match the for attribute on the labels.
+
+# Render the Login View
+
+Remember INDUCES!
+In controllers/sessions.js:
+
+ // New (login page)
+sessionsRouter.get('/new', (req, res) => {
+	res.render('sessions/new.ejs')
+})
+STOP! Check your work. We've already coded out the login functionality. Go ahead and try logging in from the browser. If it works, you should be redirected to the browser. If it doens't work, come off mute and let's debug!
+
+# Create the Register View
+
+mkdir views/users
+touch views/users/new.ejs
+
+In views/users/new.ejs:
+
+ <!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>MEEN Auth Starter</title>
+</head>
+
+<body>
+	<%- include('../partials/nav.ejs')  %>
+	<h1>Register</h1>
+	<form action='/users' method='POST'>
+		<label for="email">Email:</label>
+		<input type="email" name="email" id="email" />
+
+		<label for="password">Password:</label>
+		<input type="password" name="password" id="password" />
+
+		<input type="submit" value="Register">
+	</form>
+</body>
+
+</html>
+If you copied and pasted this code over from the markdown or from your login page, remember to read through line by line to update it!
+
+
+
+
+# Render the Registration View
+
+Remember INDUCES!
+In controllers/users.js:
+
+ // New (registration page)
+userRouter.get('/new', (req, res) => {
+	res.render('users/new.ejs');
+});
+
+STOP! Check your work.
+
+
+# Create a new user from the browser, using a new email address. 
+If it works, you should be redirected to the index page.
+
+Refactor Routes that Render Views to Include Current User Data
+
+In controllers/sessions.js:
+
+ // New (login page)
+sessionsRouter.get('/new', (req, res) => {
+	res.render('sessions/new.ejs', {
+		currentUser: req.session.currentUser
+	});
+});
+
+
+In controllers/users.js:
+
+ // New (registration page)
+userRouter.get('/new', (req, res) => {
+	res.render('users/new.ejs', {
+		currentUser: req.session.currentUser
+	});
+});
+In server.js:
+
+ app.get('/', (req, res) => {
+	res.render('index.ejs', {
+		currentUser: req.session.currentUser
+	});
+});
+
+
+
+# Update Nav Partial with Conditional Rendering and Logout Button
+
+In views/partials/nav.ejs:
+
+ <nav>
+	<% if(currentUser) { %>
+		<a href="/">Home</a>
+		<form action="/sessions?_method=DELETE" method="POST">
+			<input type="submit" value="Log Out" />
+		</form>
+	<% } else { %>
+		<a href="/">Home</a>
+		<a href="/users/new">Register</a>
+		<a href="/sessions/new">Login</a>
+	<% } %>
+</nav>
+
+
+
+# Create a Logout Route
+
+Remember INDUCES!
+
+Inside of controllers/sessions.js, we can add:
+
+ sessionsRouter.delete('/', (req, res) => {
+  req.session.destroy((error) => {
+    res.redirect('/');
+  });
+});
+
+
+
+STOP! Check your work. 
+
+Log in, then try logging out.
+
+
+
+
+UH OH! Time to debug!
+
+Let's make note of all the clues we're given. We're getting Oops! No user with that email address has been registered. back in the browser.
+
+
+Where is this coming from?
+
+Click For Answer
+
+
+
+Why is this happening?
+
+Click For Answer
+
+
+
+How can we fix this?
+Click For Answer
+
+STOP! Check your work.
+
+
+
+
+# Create a Dashboard View
+
+Our Dashboard is going to be the protected index page. So let's create this view at the root of our views directory, along side our index.ejs
+
+touch views/dashboard.ejs
+In views/dashboard.ejs:
+
+ <!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>MEEN Auth Starter</title>
+</head>
+
+<body>
+	<%- include('./partials/nav.ejs')  %>
+	<h1>Dashboard</h1>
+</body>
+
+</html>
+
+
+
+# Render the Dashboard View
+
+We've decided we want to render the index view IF the user is logged out and we want to render the dashboard view IF the user is logged in.
+
+In server.js:
+
+ app.get('/', (req, res) => {
+	if (req.session.currentUser) {
+		res.render('dashboard.ejs', {
+			currentUser: req.session.currentUser
+		});
+	} else {
+		res.render('index.ejs', {
+			currentUser: req.session.currentUser
+		});
+	}
+});
+
+
+
+STOP! Check your work.
+
+
+Navigate to http://localhost:3000/
+Use the navbar to navigate to your login page
+Login - you should be redirected to the dashboard page
+Logout - you should be redirected to the index page
+
+
+
+# Create a Template Repo!
+Push your work up to github
+Navigate to your repo on github.com then navigate to the repo settings
+Click the box to turn it into a template repo
+
+
