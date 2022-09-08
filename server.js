@@ -10,6 +10,7 @@ const session = require('express-session');
 // Body parser middleware: give us access to req.body
 app.use(express.urlencoded({ extended: true }));
 
+// Middleware Configure Express Sessions
 app.use(
     session({
         secret: process.env.SECRET,
@@ -24,6 +25,26 @@ app.use('/users', userController);
 // Routes / Controllers //Configure Sessions Controller as Middleware
 const sessionsController = require('./controllers/sessions');
 app.use('/sessions', sessionsController);
+
+// Routes / Controllers Index View
+app.get('/', (req, res) => {
+	res.render('index.ejs', {
+		currentUser: req.session.currentUser
+	});
+});
+
+// Routes . Render The Dashboard View
+app.get('/', (req, res) => {
+	if (req.session.currentUser) {
+		res.render('dashboard.ejs', {
+			currentUser: req.session.currentUser
+		});
+	} else {
+		res.render('index.ejs', {
+			currentUser: req.session.currentUser
+		});
+	}
+});
 
 // Database Configuration
 mongoose.connect(process.env.MONGODB_URL, {

@@ -749,5 +749,3 @@ Logout - you should be redirected to the index page
 Push your work up to github
 Navigate to your repo on github.com then navigate to the repo settings
 Click the box to turn it into a template repo
-
-
