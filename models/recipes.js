@@ -3,14 +3,20 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 // User Schema
-const recipeSchema = Schema(   {
-    "from": 0,
-    "to": 0,
+const recipeSchema = Schema(   
+    {
+    /*"from": 0, "to": 0,
     "count": 0,
     "_links": {
       "self": {
         "href": "string",
-
+        "title": "string"
+      },
+      "next": {
+        "href": "string",
+        "title": "string"
+      }
+    },
     "hits": [
       {
         "recipe": {
@@ -68,7 +74,7 @@ const recipeSchema = Schema(   {
           "calories": 0,
           "glycemicIndex": 0,
           "totalCO2Emissions": 0,
-          "co2EmissionsClass": "A+",
+          "co2EmissionsClass": 0,
           "totalWeight": 0,
           "cuisineType": [
             "string"
@@ -94,7 +100,7 @@ const recipeSchema = Schema(   {
               "tag": "string",
               "schemaOrgTag": "string",
               "total": 0,
-              "hasRDI": true,
+              "hasRDI": 0,
               "daily": 0,
               "unit": "string",
               "sub": {}
@@ -112,8 +118,13 @@ const recipeSchema = Schema(   {
           }
         }
       }
-    ]
-  }
+    ]*/
+    label: { type: String},
+    uri: { type: String},
+    calories: {type: String},
+
+}
+
 );
 
 

@@ -50,15 +50,20 @@
                        const recipeInfoList = recipeInfo[i];
                        
 
-                    $('.information').append(
-                       "<h2>" + recipeInfo[i].recipe.label + "</h2>" + 
-                       '<form action="/controllers/recipes/new" method="POST"><input type="submit" valu="ADD RECIPES TO YOUR COLLECTION!"</input></form>'+
-                       "<p><img src='" + recipeInfo[i].recipe.images.REGULAR.url+"''></p>"+
-                       "<p><b><h2>Ingredents:</b></h2><ul><li>" + recipeInfo[i].recipe.ingredientLines[0]+ "</li>" +
-                       "<li>1. " + recipeInfo[i].recipe.ingredientLines[1]+ "</li>" +
-                       "<li>2. " + recipeInfo[i].recipe.ingredientLines[2]+ "</li>" +
-                       "<li>3. " + recipeInfo[i].recipe.ingredientLines[3]+ "</li></ul></p>" +
-                       "<p>For more info: <a href ='" + recipeInfo[i].recipe.url + "'>" + recipeInfo[i].recipe.url + "</a></p><hr>"
+                    $('.information').append( 
+                        "<p><img src='" + recipeInfo[i].recipe.images.REGULAR.url+"''></p>"+
+
+                       '<form action="/recipes" method="POST">' +
+                       '<ul><label for="label">Title </label>'+
+                       '<input type="label" name="label" id="label" value="' + recipeInfo[i].recipe.label + '"</input></ul>'+
+                       '<ul><label for="calories">Calories </label>'+
+                       '<input type="calories" name="calories" id="calories" value="' + recipeInfo[i].recipe.calories + '"</input></ul>'+
+                       '<ul><label for="uri">For More Info</label>'+
+
+                       '<input type="uri" name="uri" id="uri" value="' + recipeInfo[i].recipe.uri + '"</input>'+
+
+                       '<input type="submit" value="ADD RECIPES TO YOUR COLLECTION!"</input>"</form><hr>"'
+
                     );
                      }
                   },
