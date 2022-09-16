@@ -13,8 +13,8 @@ A web application that search recipes (by keywords)  and display information of 
 9. MongoDB and Mongoose
 
 ## Deployed app <br/>
-1. [Recipe Deployed link](https://shielded-peak-31298.herokuapp.com/)
-2. [Recipe Github](https://github.com/kyldoris/recipes-project-2)
+1. [Recipes Deployed link](https://shielded-peak-31298.herokuapp.com/)
+2. [Recipes Github](https://github.com/kyldoris/recipes-project-2)
 
 
 ## Basis Instructions<br/>
