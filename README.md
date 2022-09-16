@@ -21,6 +21,7 @@ A web application that search recipes (by keywords)  and display information of 
 
 ## Icebox <br/>
 1. CSS styling could be much better 
-2. A new function that can add recipes to a specific user's account
-3. Filtering for recipes results
-4. Display more information than just Title, Calories, Link
+2. Create proper Register, login, logout routes. Both register and login work, but couldn't logout
+3. A new function that can add recipes to a specific user's account
+4. Filtering for recipes results
+5. Display more information than just Title, Calories, Link
