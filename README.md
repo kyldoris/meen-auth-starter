@@ -5,12 +5,10 @@ A web application that search recipes (by keywords)  and display information of 
 1. HTML5
 2. CSS3
 3. JavaScript
-4. jQuery
-5. Node.js
-6. Express
-7. EJS
-8. Edaman API
-9. MongoDB and Mongoose
+4. Express
+5. Edaman API
+6. MongoDB
+7. Mongoose
 
 ## Deployed app <br/>
 1. [Recipes Deployed link](https://shielded-peak-31298.herokuapp.com/)
@@ -26,7 +24,7 @@ A web application that search recipes (by keywords)  and display information of 
 
 ## Icebox <br/>
 1. CSS styling could be much better 
-2. Create proper Register, login, logout routes. Both register and login work, but couldn't logout
+2. Create proper Register, login, logout routes. Both register and login work, but not logout
 3. A new function that can add recipes to a specific user's account
 4. Filtering for recipes results
 5. Display more information than just Title, Calories, Link
