@@ -123,9 +123,10 @@ const recipeSchema = Schema(
     uri: { type: String},
     calories: {type: String},
 
-}
-
-);
+},
+{
+timestamps: true
+});
 
 
 // User Model
