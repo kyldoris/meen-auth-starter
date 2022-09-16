@@ -1,5 +1,6 @@
 <header>
-
+	<h1>YOUR RECIPES</h1>
+    <ul>
 	<% if(currentUser) { %>
 		<li><a href="/">Home</a></li>
 		<form action="/sessions?_method=DELETE" method="POST">
@@ -13,8 +14,7 @@
 
 
 
-    <h1>YOUR RECIPES</h1>
-    <ul>
+  
       <li><a href="/">HOME</a></li>
       <li><a href="/recipes">SAVED RECIPES</a></li>
     </ul>
