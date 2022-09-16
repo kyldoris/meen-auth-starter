@@ -9,6 +9,7 @@ A web application that search recipes (by keywords)  and display information of 
 5. Edaman API
 6. MongoDB
 7. Mongoose
+8. EJS
 
 ## Deployed app <br/>
 1. [Recipes Deployed link](https://shielded-peak-31298.herokuapp.com/)
