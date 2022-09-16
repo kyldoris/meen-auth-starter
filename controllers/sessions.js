@@ -15,7 +15,7 @@ sessionsRouter.get('/new', (req, res) => {
 // Delete (logout route)
 sessionsRouter.delete('/', (req, res) => {
     req.session.destroy((error) => {
-      res.redirect('/');
+      res.redirect('/recipes');
     });
   });
 
