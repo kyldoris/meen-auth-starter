@@ -187,6 +187,8 @@ body {
     margin: 0.5em 0;
   }
   input[type="submit"] {
+    display: inline-block;
+
     width: 20%;
     font-family: 'Montserrat';
     font-weight: 700;
