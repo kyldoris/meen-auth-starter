@@ -26,19 +26,21 @@ recipesRouter.delete('/:id', (req, res) => {
 
 //UPDATE
 //U
+recipesRouter.get('/:id/edit', (req, res) =>{
+  Recipes.findById(req.params.id, (err, foundRecipes) => {
+      res.render('recipes/edit.ejs', {
+          recipes: foundRecipes
+      })
+  })
+})
+
 recipesRouter.put('/:id', (req, res) => {
   Recipes.findByIdAndUpdate(req.params.id, req.body,{new:true}, () => {
       res.redirect('/recipes')
   }) 
 })
 
-recipesRouter.get('/:id/edit', (req, res) =>{
-  Recipes.findById(req.params.id, (err, foundRecipes) => {
-      res.render('/recipes/edit.ejs', {
-          recipes: foundRecipes
-      })
-  })
-})
+
 
 // ADD/CREATE/NEW
 recipesRouter.post('/', (req, res) => {
