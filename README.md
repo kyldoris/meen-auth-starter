@@ -6,13 +6,18 @@ A web application that search recipes (by keywords)  and display information of 
 2. CSS3
 3. JavaScript
 4. jQuery
-5. Google Fonts
-6. Edaman API
-7. MongoDB and Mongoose
+5. Node.js
+6. Express
+7. EJS
+8. Edaman API
+9. MongoDB and Mongoose
 
 ## Deployed app <br/>
-[Recipe Deployed link: ](https://shielded-peak-31298.herokuapp.com/)
+[Recipe Deployed link](https://shielded-peak-31298.herokuapp.com/)
+[Recipe Github](https://github.com/kyldoris/recipes-project-2)
 
+
+## Basis Instructions<br/>
 1. Users can search the recipes by keyword(s) and the result from the search API will be listed on the same page. 
 
 2. Then users can add the recipe(s) by clicking the "ADD" button to "SAVED RECIPES PAGE" (on the top righthand corner)
