@@ -188,7 +188,6 @@ body {
   }
   input[type="submit"] {
     display: inline-block;
-
     width: 20%;
     font-family: 'Montserrat';
     font-weight: 700;
@@ -202,7 +201,7 @@ body {
     color: #fb8500;
     background: #fff;
   }
-  form strong {
+  form {
     text-transform: uppercase;
     display: inline-block;
     margin: 0.3em;
