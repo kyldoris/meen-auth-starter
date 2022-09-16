@@ -18,10 +18,12 @@ app.use(methodOverride("_method"))
 
 app.use(
     session({
-        secret: process.env.SECRET,
+        secret: 'secretidhere',
         resave: false,
         saveUninitialized: false
     }));
+
+
 
 // Routes / Controllers
 const userController = require('./controllers/controller.user');
