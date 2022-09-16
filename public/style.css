@@ -31,6 +31,7 @@ body {
     margin: 0 auto;
     padding: 16px 48px;
     box-sizing: border-box;
+    border-radius: 2px;
     background: #023047;
     text-align: center;
     box-shadow: 1px 1px 5px #888;
@@ -43,6 +44,7 @@ body {
     width: 80%;
     margin: 0 auto;
     padding: 16px 48px;
+    border-radius: 2px;
     box-sizing: border-box;
     background: #023047;
     text-align: center;
