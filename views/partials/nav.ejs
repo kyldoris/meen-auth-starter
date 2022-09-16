@@ -1,17 +1,12 @@
 <header>
-
 	<% if(currentUser) { %>
-		<li><a href="/">Home</a></li>
 		<form action="/sessions?_method=DELETE" method="POST">
 			<input type="submit" value="Log Out" />
 		</form>
 	<% } else { %>
-		<a href="/">Home</a>
 		<a href="/users/new">Register</a>
 		<a href="/sessions/new">Login</a>
 	<% } %>
-
-
 
     <h1>YOUR RECIPES</h1>
     <ul>
