@@ -11,6 +11,8 @@ const session = require('express-session');
 // Body parser middleware: give us access to req.body
 app.use(express.static("public"))
 app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride("_method"))
+
 
 // Middleware Configure Express Sessions
 

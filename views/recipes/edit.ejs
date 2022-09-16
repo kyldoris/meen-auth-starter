@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Recipes</title>
+</head>
+
+<body>
+    <header>
+        <h1>Edit <%= recipes.label %>'s Info</h1>
+        <nav>
+            <ul>
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                <li>
+                    <a href="/recipes">Saved Recipes</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Edit Recipe</h2>
+        <form action="/recipes/<%= recipes._id %>?_method=PUT" method="POST">
+            <input type="label" name="label" value="<%= recipes.label %>" /><br />
+            <input type="calories" name="calories" value="<%= recipes.calories %>" /><br />
+            <input type="uri" name="uri" value="<%= recipes.uri %>" /><br />
+
+            <input type="submit" value="Update Recipe" />
+        </form>
+    </main>
+</body>
+
+</html>
