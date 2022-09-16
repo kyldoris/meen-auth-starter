@@ -10,13 +10,7 @@ const recipeSchema = Schema(   {
     "_links": {
       "self": {
         "href": "string",
-        "title": "string"
-      },
-      "next": {
-        "href": "string",
-        "title": "string"
-      }
-    },
+
     "hits": [
       {
         "recipe": {
