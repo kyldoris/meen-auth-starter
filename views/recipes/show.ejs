@@ -16,19 +16,7 @@
 
 <body>
     <main>
-        <h1>Show Page for <%= recipes.label %></h1>
-        <nav>
-            <ul>
-                <li>
-                    <a href="/">Home</a>
-                </li>
-                <li>
-                    <a href="/recipes">Saved Recipes</a>
-                </li>
-            </ul>
-        </nav>
-    </header>
-    
+        <h1><%= recipes.label %></h1>
         <section>
             <h2>Recipe's Information</h2>
             <ul>
@@ -48,4 +36,8 @@
             <a href="/recipes/<%= recipes._id %>/edit">Edit</a>
         </section>
     </main>
+    <footer>
+        <span>℗ 2022</span>
+        <span>BY DORIS LAU</span>
+      </footer>
 </body>

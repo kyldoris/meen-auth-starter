@@ -1,25 +1,20 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>Recipes</title>
-</head>
-
-<body>
+    <meta charset="UTF-8">
+    <title>Recipes | Food </title>
+    <link rel="stylesheet" href="/style.css">
     <header>
-        <h1>Edit <%= recipes.label %>'s Info</h1>
-        <nav>
-            <ul>
-                <li>
-                    <a href="/">Home</a>
-                </li>
-                <li>
-                    <a href="/recipes">Saved Recipes</a>
-                </li>
-            </ul>
-        </nav>
-    </header>
+
+    
+        <h1>YOUR RECIPES</h1>
+        <ul>
+          <li><a href="/">HOME</a></li>
+          <li><a href="/recipes">SAVED RECIPES</a></li>
+        </ul>
+      </header>
+<body>
+   
     <main>
         <h2>Edit Recipe</h2>
         <form action="/recipes/<%= recipes._id %>?_method=PUT" method="POST">
@@ -31,5 +26,8 @@
         </form>
     </main>
 </body>
-
+<footer>
+    <span>℗ 2022</span>
+    <span>BY DORIS LAU</span>
+  </footer>
 </html>
