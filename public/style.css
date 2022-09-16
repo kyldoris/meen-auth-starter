@@ -11,8 +11,6 @@ body {
 
   .navBar{
     color: #fb8500; 
-
-
   }
  
   a {
@@ -40,6 +38,7 @@ body {
     justify-content: space-between;
     color: #fb8500; 
   }
+
   main, div{
     width: 80%;
     margin: 0 auto;
@@ -52,8 +51,6 @@ body {
     justify-content: space-between;
     color: #fb8500; 
   }
-  
-  
   
   /* ================ */
   /*      HEADER     */
@@ -76,9 +73,11 @@ body {
     text-transform: uppercase;
     color: #fb8500;
   }
+
   header li a {
     color: #fb8500;
   }
+
   header h1 {
     color: #fb8500;
   }
@@ -98,15 +97,18 @@ body {
     margin: 0 0 0 0;
     font-family: 'Inconsolata', courier;
   }
+
   li {
     margin: 1em 0;
   }
+
   li a {
     color: #fb8500;
     font-size: 1.1em;
     display: inline-block;
     padding-bottom: 0.3em;
   }
+
   li a:after {
     content: '';
     display: block;
@@ -116,9 +118,11 @@ body {
     background: #ccc;
     transition: 0.7s ease-in-out;
   }
+
   li a:hover:after {
     width: 100%;
   }
+
   main h1 {
     display: inline-block;
     color: #fb8500;
@@ -127,14 +131,13 @@ body {
     width: 70%;
     margin-bottom: 0.5em;
   }
+
   main > div {
     width: 49%;
   }
   main.show-main {
     display: block;
   }
-  
-  
   
   /* ================ */
   /*       SHOW       */
@@ -144,13 +147,16 @@ body {
     margin: 0 0 0.5em 0;
     color: #fb8500;;
   }
+
   h3 {
     margin-top: 0.5em;
   }
+  
   img {
-    width: 70%;
+    width: 50%;
     border-radius: 1em;
   }
+  
   .back-btn {
     display: block;
     width: 70%;
