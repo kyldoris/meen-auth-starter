@@ -17,12 +17,12 @@
 <body>
     <main>
         <main>
-            <h2>List of Recipes</h2>
+            <h2>List of Saved Recipes</h2>
             <ol>
                 <% for(let i = 0; i < recipes.length; i++){ %>
                 <li>
                     <a href="/recipes/<%= recipes[i]._id %>"><%= recipes[i].label %></a>
-                </li>
+                </li><hr>
                 <% } %>
 
             </ol>
