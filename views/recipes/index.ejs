@@ -18,14 +18,14 @@
     <main>
         <main>
             <h2>List of Recipes</h2>
-            <ul>
+            <ol>
                 <% for(let i = 0; i < recipes.length; i++){ %>
                 <li>
                     <a href="/recipes/<%= recipes[i]._id %>"><%= recipes[i].label %></a>
                 </li>
                 <% } %>
 
-            </ul>
+            </ol>
         </main>
     </header>
 </body>
