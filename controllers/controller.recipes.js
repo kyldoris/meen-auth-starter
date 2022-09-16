@@ -5,6 +5,7 @@ const db = mongoose.connection;
 const express = require('express');
 const recipesRouter = express.Router();
 const Recipes = require('../models/recipes.js');
+
 //INDUCE
 //INDEX
 recipesRouter.get('/', (req,res) => {
@@ -53,7 +54,6 @@ recipesRouter.post('/', (req, res) => {
     });
 
 //SHOW
-    
 recipesRouter.get('/:id', (req, res) => {
   Recipes.findById(req.params.id, (err, foundRecipes) => {
       res.render('recipes/show.ejs',  {
@@ -62,4 +62,4 @@ recipesRouter.get('/:id', (req, res) => {
   })
 })
 
-    module.exports = recipesRouter;
+module.exports = recipesRouter;
