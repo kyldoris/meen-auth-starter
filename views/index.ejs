@@ -1,16 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
-</head>
-
-<body>
+    <meta charset="UTF-8">
+    <title>Recipes | Food </title>
+    <link rel="stylesheet" href="/style.css">
 	<%- include('./partials/nav.ejs')  %>
-	<h1>Home Page</h1>
+</head>
+<body>
+    <main>
+
+    <form>
+        <h1 id ='mainTitle'>Find Your Favorite Recipe!</h1>
+
+        <input id="searchBar" type="text" placeholder="Find recipes by Keyword(s) or Ingredient(s)
+        " />
+        <input id="searchButton" type="submit" value="SEARCH"></input> 
+        
+    </form>
+    </main>
+
+    <div class="information">
+        <h1><b>RECIPES & DETAILS</b></h1>
+    </div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+<script>
+    const $form = $('form')
+    const $input = $('input[type="text"]')
+    
+    $form.on('submit', handleGetData)
+ 
+    function handleGetData(recipe) {
+        recipe.preventDefault() //< to stop broswer from refreshing every time we click 
+         userInput = $input.val();
+        if (userInput === '') return;
+     
+     const URL = "https://api.edamam.com/api/recipes/v2?type=public&q="+userInput+"&app_id=7f6c4275&app_key=b37b4433bc0431b930bcc25337dfe5b4"
+ 
+ 
+     $.ajax(URL).then(
+     
+         function(json) {
+                    $('.information').html("<h1><b>RECIPES & DETAILS</b></h1><hr>")
+     
+                     const recipeList = [];
+                     const recipeInfo =  json.hits;
+                     for (let i = 0; i < recipeInfo.length; i++) {
+                       const recipeInfoList = recipeInfo[i];
+                       
+
+                    $('.information').append(
+                       "<h2>" + recipeInfo[i].recipe.label + "</h2>" + 
+                       '<form action="/controllers/recipes/new" method="POST"><input type="submit" valu="ADD RECIPES TO YOUR COLLECTION!"</input></form>'+
+                       "<p><img src='" + recipeInfo[i].recipe.images.REGULAR.url+"''></p>"+
+                       "<p><b><h2>Ingredents:</b></h2><ul><li>" + recipeInfo[i].recipe.ingredientLines[0]+ "</li>" +
+                       "<li>1. " + recipeInfo[i].recipe.ingredientLines[1]+ "</li>" +
+                       "<li>2. " + recipeInfo[i].recipe.ingredientLines[2]+ "</li>" +
+                       "<li>3. " + recipeInfo[i].recipe.ingredientLines[3]+ "</li></ul></p>" +
+                       "<p>For more info: <a href ='" + recipeInfo[i].recipe.url + "'>" + recipeInfo[i].recipe.url + "</a></p><hr>"
+                    );
+                     }
+                  },
+
+         function(xhr, status, err) {
+             console.log('Sorry! We broke it! Check back later!')
+                    // This time, we do not end up here!
+                 }
+                ); 
+     };
+     
+ </script>
+
 </body>
+
+<%- include('./partials/footer.ejs')  %>
 
 </html>

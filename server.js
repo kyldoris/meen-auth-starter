@@ -4,13 +4,16 @@ const app = express();
 require("dotenv").config();
 const mongoose = require("mongoose");
 const db = mongoose.connection;
+const methodOverride = require("method-override");
 const session = require('express-session');
 
 // Middleware
 // Body parser middleware: give us access to req.body
+app.use(express.static("public"))
 app.use(express.urlencoded({ extended: true }));
 
 // Middleware Configure Express Sessions
+
 app.use(
     session({
         secret: process.env.SECRET,
@@ -21,6 +24,9 @@ app.use(
 // Routes / Controllers
 const userController = require('./controllers/controller.user');
 app.use('/users', userController);
+
+const recipesController = require('./controllers/controller.recipes');
+app.use('/recipes', recipesController);
 
 // Routes / Controllers //Configure Sessions Controller as Middleware
 const sessionsController = require('./controllers/sessions');

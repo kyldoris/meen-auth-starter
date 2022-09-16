@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>MEEN Auth Starter</title>
+    <meta charset="UTF-8">
+    <title>Recipes | Food </title>
+    <link rel="stylesheet" href="/style.css">
+    <!-- ============= LINKING STYLE TO HEAD.EJS============= -->
+	<%- include('../partials/nav.ejs')  %>
 </head>
 
 <body>
-	<%- include('../partials/nav.ejs')  %>
+	<main>
 	<h1>Register</h1>
 	<form action='/users' method='POST'>
 		<label for="email">Email:</label>
@@ -20,6 +20,10 @@
 
 		<input type="submit" value="Register">
 	</form>
+	</main>
 </body>
-
+<footer>
+    <span>℗ 2022</span>
+    <span>BY DORIS LAU</span>
+  </footer>
 </html>
