@@ -18,9 +18,14 @@
     <main>
         <h2>Edit Recipe</h2>
         <form action="/recipes/<%= recipes._id %>?_method=PUT" method="POST">
-            <input type="label" name="label" value="<%= recipes.label %>" /><br />
-            <input type="calories" name="calories" value="<%= recipes.calories %>" /><br />
-            <input type="uri" name="uri" value="<%= recipes.uri %>" /><br />
+            <ul><label for="label">Title </label>
+            <input type="label" name="label" value="<%= recipes.label %>" /></ul><br/>
+            
+            <ul><label for="calories">Calories </label>
+            <input type="calories" name="calories" value="<%= recipes.calories %>" /></ul><br/>
+
+            <ul><label for="uri">Link</label>
+            <input type="uri" name="uri" value="<%= recipes.uri %>" /></ul><br/>
 
             <input type="submit" value="Update Recipe" />
         </form>
